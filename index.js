@@ -82,7 +82,7 @@ const sample = '      Hello      world    '
 //CHALLENGE 5
 //kebobCase(), 32, 48-57, 
 
-function kebob(str) {
+function kebob(str, separator = '-') {
   const lower = str.toLowerCase()
   const chars = lower.split('')
   const filtered = chars.filter((c) => {
@@ -97,11 +97,19 @@ function kebob(str) {
     return false
   }) 
   const spaceFree = removeExtraSpaces(filtered.join(''))
-  return spaceFree.split(' ').join('-')
+  return spaceFree.split(' ').join(separator)
+}
+
+//const testStr = ' henlo    friendlo!!!   1, 3, 5 and 77    fabulous-girl'
+
+//Challenge 6
+//snakeCase()
+
+function snakeCase(str) {
+  return kebob(str, '_')
 }
 
 const testStr = ' henlo    friendlo!!!   1, 3, 5 and 77    fabulous-girl'
-console.log(kebob(testStr))
 
 //TESTS
 console.log( capitalize('henlo friendlo') )
@@ -112,5 +120,7 @@ console.log( capitalizeWords('hi earth') )
 console.log( capitalizeWords('henlo friendlo how are you') )
 console.log( capitalizeWords('my dogs are mo betta than yours') )
 console.log( removeExtraSpaces(sample) )
+console.log(kebob(testStr))
+console.log(snakeCase(testStr))
 
 //node index.js
