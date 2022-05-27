@@ -67,8 +67,43 @@ function capitalizeWords(str) {
 }
 
 //CHALLENGE 4
-//removeExtraSpaces()
+//removeExtraSpaces() and reduce to single space 
+//string.trim(), str.split()
 
+function removeExtraSpaces(str) {
+  const trimmed = str.trim()
+  const chars = trimmed.split(' ')
+  const filtered = chars.filter( (c) => c !== '' )
+  return filtered.join(' ')
+}
+
+const sample = '      Hello      world    '
+
+//CHALLENGE 5
+//kebobCase(), 32, 48-57, 
+
+function kebob(str) {
+  const lower = str.toLowerCase()
+  const chars = lower.split('')
+  const filtered = chars.filter((c) => {
+    const code = c.charCodeAt(0)
+    if(code > 96 && code < 123 ) {
+      return true
+    } else if (code > 47 && code < 58) {
+      return true 
+    } else if (code === 32 || code === 45) {
+      return true
+    }
+    return false
+  }) 
+  const spaceFree = removeExtraSpaces(filtered.join(''))
+  return spaceFree.split(' ').join('-')
+}
+
+const testStr = ' henlo    friendlo!!!   1, 3, 5 and 77    fabulous-girl'
+console.log(kebob(testStr))
+
+//TESTS
 console.log( capitalize('henlo friendlo') )
 console.log( capitalize('mitsumori') )
 console.log( capitalize('my monstera is happy') )
@@ -76,3 +111,6 @@ console.log( capitalize('my monstera is happy') )
 console.log( capitalizeWords('hi earth') )
 console.log( capitalizeWords('henlo friendlo how are you') )
 console.log( capitalizeWords('my dogs are mo betta than yours') )
+console.log( removeExtraSpaces(sample) )
+
+//node index.js
