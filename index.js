@@ -109,7 +109,22 @@ function snakeCase(str) {
   return kebob(str, '_')
 }
 
-const testStr = ' henlo    friendlo!!!   1, 3, 5 and 77    fabulous-girl'
+//const testStr = ' henlo    friendlo!!!   1, 3, 5 and 77    fabulous-girl'
+
+//Challenge 7
+function camelCase(str) {
+  const words = str.split(' ')
+  const camelWords = words.map((word, i) => {
+    if (i === 0) {
+      return word.toLowerCase()
+    }
+    return capitalize(word)
+  })
+  return camelWords.join('')
+}
+
+const testStr = 'Henlo friendlo how are you today'
+console.log(camelCase(testStr))
 
 //TESTS
 console.log( capitalize('henlo friendlo') )
